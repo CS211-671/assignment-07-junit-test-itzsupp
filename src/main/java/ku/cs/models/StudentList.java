@@ -3,13 +3,13 @@ package ku.cs.models;
 import java.util.ArrayList;
 
 public class StudentList {
-    private ArrayList<Student> students;
+    private static ArrayList<Student> students;
 
     public StudentList() {
         students = new ArrayList<>();
     }
 
-    public void addNewStudent(String id, String name) {
+    public static void addNewStudent(String id, String name) {
         id = id.trim();
         name = name.trim();
         if (!id.isEmpty() && !name.isEmpty()) {
@@ -20,7 +20,7 @@ public class StudentList {
         }
     }
 
-    public void addNewStudent(String id, String name, double score) {
+    public static void addNewStudent(String id, String name, double score) {
         id = id.trim();
         name = name.trim();
         if (!id.isEmpty() && !name.isEmpty()) {
@@ -31,7 +31,7 @@ public class StudentList {
         }
     }
 
-    public Student findStudentById(String id) {
+    public static Student findStudentById(String id) {
         for (Student student : students) {
             if (student.isId(id)) {
                 return student;
@@ -40,14 +40,14 @@ public class StudentList {
         return null;
     }
 
-    public void giveScoreToId(String id, double score) {
+    public static void giveScoreToId(String id, double score) {
         Student exist = findStudentById(id);
         if (exist != null) {
             exist.addScore(score);
         }
     }
 
-    public String viewGradeOfId(String id) {
+    public static String viewGradeOfId(String id) {
         Student exist = findStudentById(id);
         if (exist != null) {
             return exist.grade();
